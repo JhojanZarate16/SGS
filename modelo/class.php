@@ -184,7 +184,7 @@ class Herramientas
 		$num = $stmt->rowCount();
 		if($num==0)
 		{
-			header("Location: login.php?l=1");
+			header("Location: index.php?l=1");
 		}
 		else
 		{

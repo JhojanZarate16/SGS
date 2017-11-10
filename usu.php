@@ -8,9 +8,8 @@ if(isset($_SESSION["id_perfil"]))
 <head>
 	<meta charset="UTF-8">
 	<title>Registro</title>
-	<link rel="stylesheet" type="text/css" media="all" href="css/switchery.min.css">
-	<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-	<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -46,10 +45,10 @@ if(isset($_SESSION["id_perfil"]))
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="usu.php">Inicio</a></li>
-				<li><a href="correspondencia.php">Correspondencia</a></li>
-				<li><a href="nacional.php">Mensajeria Nacional</a></li>
-				<li><a href="internacional.php">Mensajeria Internacional</a></li>
-				<li><a href="salir.php">Cerrar Sesion</a></li>
+				<li><a id="menu" href="correspondencia.php">Correspondencia</a></li>
+				<li><a id="menu" href="nacional.php">Mensajeria Nacional</a></li>
+				<li><a id="menu" href="internacional.php">Mensajeria Internacional</a></li>
+				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
@@ -102,10 +101,12 @@ if(isset($_SESSION["id_perfil"]))
 else
 {
 	?>
-   Contenido Bloqueado Solo Puede Acceder, Usuarios <a href='javascript:history.back(-1)'>Volver</a>
-
-  
-    <?php
+		<h1 align="center">
+			Contenido Bloqueado Solo Pueden Acceder, Personal Autorizado  
+			<br>
+			<a href='index.php'>Volver</a>
+		</h1>
+	<?php
 }
 ?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -38,7 +38,7 @@ else
 {
 	$pagination->rowCount("SELECT * FROM nacional");
 	$pagination->config(3, 4);
-	$sql = "SELECT * FROM nacional ORDER BY id_nacional ASC LIMIT $pagination->start_row, $pagination->max_rows";
+	$sql = "$pagination->start_row, $pagination->max_rows";
 	$query = $connection->prepare($sql);
 	$query->execute();
 	$model = array();
@@ -52,8 +52,8 @@ while($rows = $query->fetch())
 <head>
 <meta charset="UTF-8">
 	<title>Buscador De Mensajeria Nacional</title>
-	<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-	<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -65,17 +65,8 @@ while($rows = $query->fetch())
 			padding-top: 70px;
 		}
 		table.pr{
-			margin-left:250px;
 			border-collapse: separate;
 			border-spacing: 40px;
-		}
-		#pag{
-			margin-top:50px;
-			margin-left:870px;
-		}
-		
-		#tit{
-			margin-left:250px;
 		}
 	</style>
 </head>
@@ -100,10 +91,10 @@ while($rows = $query->fetch())
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="admin.php">Inicio</a></li>
-				<li><a href="register.php">Registrar</a></li>
-				<li><a href="crudper.php">Actualizar y Eliminar</a></li>
-				<li><a href="salir.php">Cerrar Sesion</a></li>
+				<li><a id="menu" href="admin.php">Inicio</a></li>
+				<li><a id="menu" href="register.php">Registrar</a></li>
+				<li><a id="menu" href="crudper.php">Actualizar y Eliminar</a></li>
+				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
@@ -129,7 +120,7 @@ while($rows = $query->fetch())
 		</ul>
 	</div>
 	<div align="center" class="b">
-		<table border="0" id="tit">
+		<table border="0" align="center">
 			<tr>
 				<td colspan="2" align="center"><div class="logo">Buscador Mensajeria<br>Nacional</div></td>
 			</tr>
@@ -137,7 +128,8 @@ while($rows = $query->fetch())
 				<td colspan="2" align="center">
 					<form name="form" method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 						<input class="form-control" name="search" type="text" placeholder="Buscar Guia" tabindex="1">
-						<input type="submit" name="Submit" value="Buscar" tabindex="2">
+						<br>
+						<input class="login-button" type="submit" name="Submit" value="Buscar" tabindex="2">
 					</form>
 				</td>
 			</tr>
@@ -163,10 +155,11 @@ while($rows = $query->fetch())
 					<td><?php echo $row["fecha"] ?></td>
 					<td><?php echo $row["ceco"] ?></td>
 					<td><?php echo $row["observaciones"] ?></td>
-					<td><a href="javascript:prueba('mornal.php?per=<?php echo $row["id_nacional"]?>')" tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
+					<td><a href="mornal2.php?per=<?php echo $row["id_nacional"]?>" tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
 				</tr>
 		<?php	
 		    }
+			$pagination->pages("btn");
 		?>
 		</table>
 	</div>
@@ -178,18 +171,13 @@ while($rows = $query->fetch())
 	<h1 align="center">
 		Contenido Bloqueado Solo Puede Acceder, Administradores 
 		<br>
-		<a href='login.php'>Volver</a>
+		<a href='index.php'>Volver</a>
 	</h1>
 <?php	
 	}
 }
 ?>
 </body>
-<div id="pag">
-<?php
-	$pagination->pages("btn");
-?>
-</div>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

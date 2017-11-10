@@ -3,7 +3,7 @@ require_once("modelo/class3.php");
 
 if(isset($_SESSION["id_perfil"]))
 {
-if($_SESSION["id_perfil"]==4)
+if($_SESSION["id_perfil"]==1)
 {
 	$herr = new Herramientas();
 	$perid = $herr->Nal($_GET["per"]);
@@ -11,7 +11,7 @@ if($_SESSION["id_perfil"]==4)
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Actualizar</title>
+	<title>Guia N° <?php echo $perid[0]["guia"] ?></title>
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -24,23 +24,23 @@ if($_SESSION["id_perfil"]==4)
 			border-collapse:separate;
 			border-spacing: 5px;
 		}
+		
+		#reg{
+			border: 1px solid;
+			padding: 10px;
+			border-radius: 20px;
+		}
 	</style>
 </head>
 <body>
 <div class="text-center register">
-<form name="form" class="text-left" method="post" action="modelo/prueba2.php">
+<form name="form" class="text-left" method="post" action="">
 <table align="center">
 	<tr>
-		<td colspan="4" align="center"><div class="logo">Registro De Correspondencia #<?php echo $perid[0]["id_nacional"] ?></td>
+		<td colspan="4" align="center"><div class="logo">Guia N° <?php echo $perid[0]["guia"] ?></td>
 	</tr>
 </table>
 <table align="center">
-	<tr>
-		<div class="form-group">
-			<td><label>Guia</label></td>
-			<td><input type="text" name="guia" class="form-control" placeholder="Debes Digitar Un N° Guia" tabindex="1"></td>
-		</div>
-	</tr>
 	<tr>
 		<div class="form-group">
 		<td><label>Empresa</label></td>
@@ -100,10 +100,6 @@ if($_SESSION["id_perfil"]==4)
 			<td><label>Observaciones</label></td>
 			<td><input type="text" class="form-control" value="<?php echo $perid[0]["observaciones"] ?>" disabled="disabled"></td>
 		</div>
-		<tr>
-		<div class="form-group">
-			<td><input type="text" name="cod" class="form-control" value="<?php echo $perid[0]["id_nacional"] ?>" style="visibility:hidden" ></td>
-		</div>
 	</tr>
 </table>
 <table align="center">
@@ -111,12 +107,12 @@ if($_SESSION["id_perfil"]==4)
 		<div class="form-group">
 			<td><input type="hidden" name="registrar" value="si"></td>
 			<td align="left">
-				<input type="button" class="login-button" onclick="window.form.submit();" value="Registrar # De Guia" tabindex="2">
+				<a href="bnal.php" id="reg" tabindex="2">Regresar</a>
 			</td>
 		</div>
 	</tr>
-</form>
 </table>
+</form>
 </body>
 <body>
 <?php
@@ -126,7 +122,7 @@ else
 {
 	?>
 		<h1 align="center">
-			Contenido Bloqueado Solo Puede Acceder, Personal Autorizado 
+			Contenido Bloqueado Solo Pueden Acceder, Mensajeros 
 			<br>
 			<a href='index.php'>Volver</a>
 		</h1>

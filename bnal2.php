@@ -2,7 +2,7 @@
 require_once("modelo/class.php");
 if(isset($_SESSION["id_perfil"]))
 {
-if($_SESSION["id_perfil"]==1)
+if($_SESSION["id_perfil"]==4)
 {
 	$herr = new Herramientas();
 	$per = $herr->ListarPersonas();
@@ -23,9 +23,9 @@ if(isset($_REQUEST["search"]) && $_REQUEST["search"] != "")
 {
 	$search = htmlspecialchars($_REQUEST["search"]);
 	$pagination->param = "&search=$search";
-	$pagination->rowCount("SELECT * FROM correspondencia WHERE guia LIKE '%".$search."%'");
+	$pagination->rowCount("SELECT * FROM nacional WHERE guia LIKE '%".$search."%'");
 	$pagination->config(3, 4);
-	$sql = "SELECT * FROM correspondencia WHERE guia LIKE '%".$search."%' ORDER BY id_correspondencia ASC LIMIT $pagination->start_row, $pagination->max_rows";
+	$sql = "SELECT * FROM nacional WHERE guia LIKE '%".$search."%' ORDER BY id_nacional ASC LIMIT $pagination->start_row, $pagination->max_rows";
 	$query = $connection->prepare($sql);
 	$query->execute();
 	$model = array();
@@ -36,7 +36,7 @@ while($rows = $query->fetch())
 }
 else
 {
-	$pagination->rowCount("SELECT * FROM correspondencia");
+	$pagination->rowCount("");
 	$pagination->config(3, 4);
 	$sql = "$pagination->start_row, $pagination->max_rows";
 	$query = $connection->prepare($sql);
@@ -64,9 +64,16 @@ while($rows = $query->fetch())
 		body {
 			padding-top: 70px;
 		}
+		
 		table.pr{
 			border-collapse: separate;
 			border-spacing: 40px;
+		}
+		
+		#pg{
+			position: absolute;
+			margin-top: 350px;
+			margin-left: 550px;
 		}
 	</style>
 </head>
@@ -91,9 +98,8 @@ while($rows = $query->fetch())
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a id="menu" href="admin.php">Inicio</a></li>
-				<li><a id="menu" href="register.php">Registrar</a></li>
-				<li><a id="menu" href="crudper.php">Actualizar y Eliminar</a></li>
+				<li><a id="menu" href="usumen.php">Ordenes Activas Nacionales</a></li>
+				<li><a id="menu" href="usumenint.php">Ordenes Activas Internacionales</a></li>
 				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
@@ -103,26 +109,14 @@ while($rows = $query->fetch())
 	<div id="menu" class="a">
 		<label class="lo">Buscador</label>
 		<ul>
-			<li><a href="bcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
-			</ul>
-		</ul>
-	</div>
-	<br>
-	<div id="menu" class="a">
-		<label class="lo">Exportar<br>Datos</label>
-		<ul>
-			<li><a href="expcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
-			</ul>
+			<li><a href="bnal2.php">M. Nacional</a></li>
+			<li><a href="bint2.php">M. Internacional</a></li>
 		</ul>
 	</div>
 	<div align="center" class="b">
 		<table border="0" align="center">
 			<tr>
-				<td colspan="2" align="center"><div class="logo">Buscador De<br>Correspondencia</div></td>
+				<td colspan="2" align="center"><div class="logo">Buscador De<br>Mensajeria Nacional</div></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
@@ -137,12 +131,12 @@ while($rows = $query->fetch())
 		<table align="center" class="pr">
 			<tr align="center">
 				<div class="form-group">
-					<td>Guia</td>
-					<td>Empresa</td>
-					<td>Fecha</td>
-					<td>Ce.Co</td>
-					<td>Tipo De Documento</td>
-					<td>Ver Mas</td>
+					<td class="td">Guia</td>
+					<td class="td">Empresa</td>
+					<td class="td">Fecha</td>
+					<td class="td">Ce.Co</td>
+					<td class="td">Destino</td>
+					<td class="td">Ver Mas</td>
 				</div>
 			</tr>
 		<?php
@@ -154,8 +148,8 @@ while($rows = $query->fetch())
 					<td><?php echo $row["empresa"] ?></td>
 					<td><?php echo $row["fecha"] ?></td>
 					<td><?php echo $row["ceco"] ?></td>
-					<td><?php echo $row["t_documento"] ?></td>
-					<td><a href="morcor2.php?per=<?php echo $row["id_correspondencia"]?>' tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
+					<td><?php echo $row["destino"] ?></td>
+					<td><a href="mornal.php?per=<?php echo $row["id_nacional"]?>" tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
 				</tr>
 		<?php	
 		    }
@@ -177,6 +171,7 @@ while($rows = $query->fetch())
 	}
 }
 ?>
+</div>
 </body>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

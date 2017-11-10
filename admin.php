@@ -11,13 +11,14 @@ if($_SESSION["id_perfil"]==1)
 	<meta name="viewport" content="width=device−width, initial−scale=1.0" />
 	<title>Pagina Principal</title>
 	<link rel="stylesheet" type="text/css" media="all" href="css/switchery.min.css">
-	<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-	<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
 	<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/li.css">
+	<link rel="stylesheet" type="text/css" href="css/ko.css">
+	<link rel="stylesheet" type="text/css" href="css/carrusel.css">
 	<style type="text/css">
 		body {
 			padding-top: 70px;
@@ -46,10 +47,10 @@ if($_SESSION["id_perfil"]==1)
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-			<li class="active"><a href="admin.php">Inicio</a></li>
-				<li><a href="register.php">Registrar</a></li>
-				<li><a href="crudper.php">Actualizar y Eliminar</a></li>
-				<li><a href="salir.php">Cerrar Sesion</a></li>
+				<li class="active"><a href="admin.php">Inicio</a></li>
+				<li><a id="menu" href="register.php">Registrar</a></li>
+				<li><a id="menu" href="crudper.php">Actualizar y Eliminar</a></li>
+				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
@@ -58,9 +59,9 @@ if($_SESSION["id_perfil"]==1)
 	<div id="menu" class="a">
 		<label class="lo">Buscador</label>
 		<ul>
-			<li><a href="bcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
+			<li><a id="letras" href="bcor.php">Correspondencia</a></li>
+			<li><a id="letras" href="bnal.php">M. Nacional</a></li>
+			<li><a id="letras" href="bint.php">M. Internacional</a></li>
 			</ul>
 		</ul>
 	</div>
@@ -68,14 +69,28 @@ if($_SESSION["id_perfil"]==1)
 	<div id="menu" class="a">
 		<label class="lo">Exportar<br>Datos</label>
 		<ul>
-			<li><a href="expcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
+			<li><a id="letras" href="expcor.php">Correspondencia</a></li>
+			<li><a id="letras" href="bnal.php">M. Nacional</a></li>
+			<li><a id="letras" href="bint.php">M. Internacional</a></li>
 			</ul>
 		</ul>
 	</div>
 	<div align="center" class="b">
-		
+		<h2>Control De Mensajeria</h2>
+		<br>
+		<div class="content-all">
+			<div class="content-carrousel">
+				<figure><img src="img/sgs.png"></figure>
+				<figure><img src="img/img2.jpg"></figure>
+				<figure><img src="img/img3.jpg"></figure>
+				<figure><img src="img/img4.jpg"></figure>
+				<figure><img src="img/img5.jpg"></figure>
+				<figure><img src="img/img6.jpg"></figure>
+				<figure><img src="img/img7.jpg"></figure>
+				<figure><img src="img/img8.jpg"></figure>
+				<figure><img src="img/img9.jpg"></figure>
+			</div>
+		</div>
 	</div>
 </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -93,7 +108,7 @@ else
 	<h1 align="center">
 		Contenido Bloqueado Solo Puede Acceder, Administradores
 		<br>
-		<a href='login.php'>Volver</a>
+		<a href='index.php'>Volver</a>
 	</h1>
     <?php
 }

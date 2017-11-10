@@ -33,11 +33,12 @@ div#menu ul li:hover{
 .A{
 	position: relative;
 	padding: 0;
+	top: 0px;
 }
 
 .B{
 	position: absolute;
-	left: 300px;
+	left: 400px;
 	top: 60px;
 }
 
@@ -49,4 +50,4 @@ div#menu ul li:hover{
 	color:#FF8000;
 	padding-left:20px;
 	font-size:20px;
-}
+}	

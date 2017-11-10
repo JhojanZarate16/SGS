@@ -15,8 +15,8 @@ if($_SESSION["id_perfil"]==1)
 <head>
 	<meta charset="UTF-8">
 	<title>Registro</title>
-	<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-	<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -55,15 +55,16 @@ if($_SESSION["id_perfil"]==1)
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="admin.php">Inicio</a></li>
+				<li><a id="menu" href="admin.php">Inicio</a></li>
 				<li class="active"><a href="register.php">Registrar</a></li>
-				<li><a href="crudper.php">Actualizar y Eliminar</a></li>
-				<li><a href="salir.php">Cerrar Sesion</a></li>
+				<li><a id="menu" href="crudper.php">Actualizar y Eliminar</a></li>
+				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="text-center register" style="padding-top:50px">
+<img id="img" src="img/1.jpg">
+<div class="text-center register">
 	<table border="0" align="center">
 		<div class="login-form-1">
 			<div class="main-login-form">
@@ -160,7 +161,7 @@ else
 		<h1 align="center">
 			Contenido Bloqueado Solo Puede Acceder, Administradores
 			<br>
-			<a href='login.php'>Volver</a>
+			<a href='index.php'>Volver</a>
 		</h1>
     <?php
 }

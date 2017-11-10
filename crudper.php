@@ -52,8 +52,8 @@ while($rows = $query->fetch())
 <head>
 <meta charset="UTF-8">
 	<title>Gestion De Usuarios</title>
-	<link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-	<link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -61,11 +61,12 @@ while($rows = $query->fetch())
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<style type="text/css">
 		body {
-			padding-top: 50px;
+			padding-top: 70px;
 		}
 		table.pr{
 			border-collapse: separate;
 			border-spacing: 40px;
+			margin-top: -30px;
 		}
 	</style>
 </head>
@@ -90,14 +91,15 @@ while($rows = $query->fetch())
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="admin.php">Inicio</a></li>
-				<li><a href="register.php">Registrar</a></li>
+				<li><a id="menu" href="admin.php">Inicio</a></li>
+				<li><a id="menu" href="register.php">Registrar</a></li>
 				<li class="active"><a href="crudper.php">Actualizar y Eliminar</a></li>
-				<li><a href="salir.php">Cerrar Sesion</a></li>
+				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
 </nav>
+<img id="img" src="img/2.jpg">
 <table border="0" align="center">
 	<tr>
 		<td colspan="2" align="center"><div class="logo">Gestion De Usuarios</div></td>
@@ -106,7 +108,8 @@ while($rows = $query->fetch())
 		<td colspan="2" align="center">
 			<form name="form" method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
 				<input class="form-control" name="search" type="text" placeholder="Buscar Usuario" tabindex="1">
-				<input type="submit" name="Submit" value="Buscar" tabindex="2">
+				<br>
+				<input type="submit" class="login-button" name="Submit" value="Buscar" tabindex="2">
 			</form>
 		</td>
 	</tr>
@@ -114,12 +117,12 @@ while($rows = $query->fetch())
 <table align="center" class="pr">
 	<tr align="center">
 		<div class="form-group">
-			<td>Id_Usuario</td>
-			<td>Nombre</td>
-			<td>Usuario</td>
-			<td>Tipo De Usuario</td>
-			<td>Actualizar</td>
-			<td>Eliminar</td>
+			<td class="td">Id_Usuario</td>
+			<td class="td">Nombre</td>
+			<td class="td">Usuario</td>
+			<td class="td">Tipo De Usuario</td>
+			<td class="td">Actualizar</td>
+			<td class="td">Eliminar</td>
 		</div>
 	</tr>
 <?php
@@ -146,14 +149,14 @@ while($rows = $query->fetch())
 	<h1 align="center">
 		Contenido Bloqueado Solo Puede Acceder, Administradores 
 		<br>
-		<a href='login.php'>Volver</a>
+		<a href='index.php'>Volver</a>
 	</h1>
 <?php	
 	}
 }
 ?>
 </body>
-<div align="center">
+<div class="td" align="center">
 <?php
 	$pagination->pages("btn");
 ?>

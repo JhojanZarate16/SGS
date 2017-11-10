@@ -2,7 +2,7 @@
 require_once("modelo/class.php");
 if(isset($_SESSION["id_perfil"]))
 {
-if($_SESSION["id_perfil"]==1)
+if($_SESSION["id_perfil"]==2)
 {
 	$herr = new Herramientas();
 	$per = $herr->ListarPersonas();
@@ -36,7 +36,7 @@ while($rows = $query->fetch())
 }
 else
 {
-	$pagination->rowCount("SELECT * FROM correspondencia");
+	$pagination->rowCount("");
 	$pagination->config(3, 4);
 	$sql = "$pagination->start_row, $pagination->max_rows";
 	$query = $connection->prepare($sql);
@@ -64,9 +64,21 @@ while($rows = $query->fetch())
 		body {
 			padding-top: 70px;
 		}
+		
 		table.pr{
 			border-collapse: separate;
 			border-spacing: 40px;
+			margin-top:-20px;
+		}
+		
+		.b{
+			margin-top:160px;
+		}
+		
+		#pg{
+			position: absolute;
+			margin-top: 500px;
+			margin-left: 600px;
 		}
 	</style>
 </head>
@@ -91,34 +103,14 @@ while($rows = $query->fetch())
 		</div>
         <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a id="menu" href="admin.php">Inicio</a></li>
-				<li><a id="menu" href="register.php">Registrar</a></li>
-				<li><a id="menu" href="crudper.php">Actualizar y Eliminar</a></li>
+				<li><a id="menu" href="usucor.php">Ordenes Activas</a></li>
+				<li class="active"><a href="bcor2.php">Buscar Ordenes</a></li>
 				<li><a id="menu" href="salir.php">Cerrar Sesion</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div id="contenedor">
-	<div id="menu" class="a">
-		<label class="lo">Buscador</label>
-		<ul>
-			<li><a href="bcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
-			</ul>
-		</ul>
-	</div>
-	<br>
-	<div id="menu" class="a">
-		<label class="lo">Exportar<br>Datos</label>
-		<ul>
-			<li><a href="expcor.php">Correspondencia</a></li>
-			<li><a href="bnal.php">M. Nacional</a></li>
-			<li><a href="bint.php">M. Internacional</a></li>
-			</ul>
-		</ul>
-	</div>
+<img id="img" src="img/2.jpg">
 	<div align="center" class="b">
 		<table border="0" align="center">
 			<tr>
@@ -155,7 +147,7 @@ while($rows = $query->fetch())
 					<td><?php echo $row["fecha"] ?></td>
 					<td><?php echo $row["ceco"] ?></td>
 					<td><?php echo $row["t_documento"] ?></td>
-					<td><a href="morcor2.php?per=<?php echo $row["id_correspondencia"]?>' tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
+					<td><a href="morcor.php?per=<?php echo $row["id_correspondencia"]?>" tabindex="1"><img src="img/plus.png" width="20" height="20"></a></td>
 				</tr>
 		<?php	
 		    }

@@ -15,14 +15,7 @@ html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, 
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/*html { overflow-y: scroll; }
-body {
-  font-family: Arial, Tahoma, sans-serif;
-  background: #e2eef4;
-  font-size: 62.5%;
-  line-height: 1;
-  padding-top: 40px;
-}*/
+
 
 br { display: block; line-height: 1.6em; } 
 
